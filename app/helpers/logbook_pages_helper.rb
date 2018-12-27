@@ -1,0 +1,2 @@
+module LogbookPagesHelper
+end

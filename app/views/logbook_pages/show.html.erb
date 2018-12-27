@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Logbook:</strong>
+  <%= @logbook_page.logbook %>
+</p>
+
+<p>
+  <strong>Page number:</strong>
+  <%= @logbook_page.page_number %>
+</p>
+
+<%= link_to 'Edit', edit_logbook_page_path(@logbook_page) %> |
+<%= link_to 'Back', logbook_pages_path %>

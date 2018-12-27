@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  logbook_page: one
+  day_minutes: 1
+  night_minutes: 1
+
+two:
+  logbook_page: two
+  day_minutes: 1
+  night_minutes: 1

@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Logbook Entries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Logbook page</th>
+      <th>Day minutes</th>
+      <th>Night minutes</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logbook_entries.each do |logbook_entry| %>
+      <tr>
+        <td><%= logbook_entry.logbook_page %></td>
+        <td><%= logbook_entry.day_minutes %></td>
+        <td><%= logbook_entry.night_minutes %></td>
+        <td><%= link_to 'Show', logbook_entry %></td>
+        <td><%= link_to 'Edit', edit_logbook_entry_path(logbook_entry) %></td>
+        <td><%= link_to 'Destroy', logbook_entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Logbook Entry', new_logbook_entry_path %>

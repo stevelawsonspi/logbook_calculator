@@ -1,0 +1,27 @@
+<%= form_for(logbook_page) do |f| %>
+  <% if logbook_page.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(logbook_page.errors.count, "error") %> prohibited this logbook_page from being saved:</h2>
+
+      <ul>
+      <% logbook_page.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :logbook_id %>
+    <%= f.text_field :logbook_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :page_number %>
+    <%= f.number_field :page_number %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

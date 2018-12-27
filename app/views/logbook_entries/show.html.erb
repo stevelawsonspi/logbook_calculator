@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Logbook page:</strong>
+  <%= @logbook_entry.logbook_page %>
+</p>
+
+<p>
+  <strong>Day minutes:</strong>
+  <%= @logbook_entry.day_minutes %>
+</p>
+
+<p>
+  <strong>Night minutes:</strong>
+  <%= @logbook_entry.night_minutes %>
+</p>
+
+<%= link_to 'Edit', edit_logbook_entry_path(@logbook_entry) %> |
+<%= link_to 'Back', logbook_entries_path %>

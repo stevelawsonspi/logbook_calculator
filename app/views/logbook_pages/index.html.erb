@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Logbook Pages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Logbook</th>
+      <th>Page number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logbook_pages.each do |logbook_page| %>
+      <tr>
+        <td><%= logbook_page.logbook %></td>
+        <td><%= logbook_page.page_number %></td>
+        <td><%= link_to 'Show', logbook_page %></td>
+        <td><%= link_to 'Edit', edit_logbook_page_path(logbook_page) %></td>
+        <td><%= link_to 'Destroy', logbook_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Logbook Page', new_logbook_page_path %>
