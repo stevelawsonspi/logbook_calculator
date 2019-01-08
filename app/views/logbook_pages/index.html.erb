@@ -1,24 +1,38 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Logbook Pages</h1>
+<h1>Logbook Pages for <%= @logbook.name %></h1>
 
 <table>
   <thead>
     <tr>
-      <th>Logbook</th>
-      <th>Page number</th>
+	  <th></th>
+	  <th colspan="2">Page Totals</th>
       <th colspan="3"></th>
+      <th colspan="3">Running Totals</th>
+	</tr>
+	<tr>
+      <th>Page</th>
+      <th>Day</th>
+      <th>Night</th>
+      <th colspan="3"></th>
+      <th>Day</th>
+      <th>Night</th>
+      <th>All</th>
     </tr>
   </thead>
 
   <tbody>
     <% @logbook_pages.each do |logbook_page| %>
       <tr>
-        <td><%= logbook_page.logbook %></td>
-        <td><%= logbook_page.page_number %></td>
-        <td><%= link_to 'Show', logbook_page %></td>
-        <td><%= link_to 'Edit', edit_logbook_page_path(logbook_page) %></td>
-        <td><%= link_to 'Destroy', logbook_page, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= logbook_page.page_number   %></td>
+		<td><%= "#{logbook_page.day_hours}/#{logbook_page.day_minutes}"     %></td>
+		<td><%= "#{logbook_page.night_hours}/#{logbook_page.night_minutes}" %></td>
+        <td><%= link_to 'Show', logbook_logbook_page_path(@logbook, logbook_page) %></td>
+        <td><%= link_to 'Edit', edit_logbook_logbook_page_path(@logbook,logbook_page) %></td>
+        <td><%= link_to 'Destroy', logbook_logbook_page_path(@logbook, logbook_page), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+		<td><%= "#{logbook_page.total_day_hours}/#{logbook_page.total_day_minutes}"     %></td>
+		<td><%= "#{logbook_page.total_night_hours}/#{logbook_page.total_night_minutes}" %></td>
+		<td><%= "#{logbook_page.total_hours}/#{logbook_page.total_minutes}"             %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +40,5 @@
 
 <br>
 
-<%= link_to 'New Logbook Page', new_logbook_page_path %>
+<%= link_to 'Logbooks', logbooks_path %>
+<%= link_to 'New Logbook Page', new_logbook_logbook_page_path(@logbook) %>

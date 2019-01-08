@@ -3,6 +3,16 @@
 <p>
   <strong>Name:</strong>
   <%= @logbook.name %>
+  <br>
+  <strong>Start Day Hours:</strong>
+  <%= @logbook.start_day_hours %>
+  <strong>Minutes:</strong>
+  <%= @logbook.start_day_minutes %>
+  <br>
+  <strong>Start Night Hours:</strong>
+  <%= @logbook.start_night_hours %>
+  <strong>Minutes:</strong>
+  <%= @logbook.start_night_minutes %>
 </p>
 
 <%= link_to 'Edit', edit_logbook_path(@logbook) %> |

@@ -69,6 +69,6 @@ class LogbooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def logbook_params
-      params.require(:logbook).permit(:name)
+      params.require(:logbook).permit(:name, :start_day_hours, :start_day_minutes, :start_night_hours, :start_night_minutes)
     end
 end

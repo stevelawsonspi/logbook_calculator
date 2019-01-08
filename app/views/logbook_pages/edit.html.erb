@@ -1,6 +1,6 @@
 <h1>Editing Logbook Page</h1>
 
-<%= render 'form', logbook_page: @logbook_page %>
+<%= render 'form', logbook: @logbook, logbook_page: @logbook_page %>
 
-<%= link_to 'Show', @logbook_page %> |
-<%= link_to 'Back', logbook_pages_path %>
+<%= link_to 'Show', logbook_logbook_page_path(@logbook, @logbook_page) %> |
+<%= link_to 'Logbook Pages', logbook_logbook_pages_path(@logbook) %>
