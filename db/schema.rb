@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181227082927) do
+ActiveRecord::Schema.define(version: 20190101014346) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,6 +21,8 @@ ActiveRecord::Schema.define(version: 20181227082927) do
     t.integer  "night_minutes"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "day_hours"
+    t.integer  "night_hours"
     t.index ["logbook_page_id"], name: "index_logbook_entries_on_logbook_page_id", using: :btree
   end
 
@@ -34,8 +36,12 @@ ActiveRecord::Schema.define(version: 20181227082927) do
 
   create_table "logbooks", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "start_day_hours"
+    t.integer  "start_day_minutes"
+    t.integer  "start_night_hours"
+    t.integer  "start_night_minutes"
   end
 
   add_foreign_key "logbook_entries", "logbook_pages"

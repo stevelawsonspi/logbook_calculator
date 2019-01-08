@@ -1,31 +1,39 @@
-## Design for Log Book Calculator
+## Design (and notes) for Log Book Calculator
 
 ### Table: User
 id
 email
 pwd
 
-### Table: Log Book
+### Table: Logbook
 id
 name
+start_day_hours
+start_day_minutes
+start_night_hours
+start_night_minutes
 
 rails g scaffold Logbook name:string 
+rails generate migration AddStartHoursToLogbooks
 
-### Table: Log Book Page
+
+### Table: Logbook Page
 id
 book_id
 page_number
 
-rails g model LogbookPage logbook:references page_number:integer
+rails g scaffold LogbookPage logbook:references page_number:integer
 
-### Table: Log Book Entry
+### Table: Logbook Entry
 id
-log_book_page_id
+logbook_page_id
+day_hours
 day_minutes
+night_hours
 night_minutes
 
-rails g model LogbookEntry logbook_page:references day_minutes:integer night_minutes:integer
-
+rails g scaffold LogbookEntry logbook_page:references day_minutes:integer night_minutes:integer
+generate migration AddHoursToLogbookEntries
 
 
 

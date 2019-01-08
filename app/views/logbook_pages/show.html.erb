@@ -2,7 +2,7 @@
 
 <p>
   <strong>Logbook:</strong>
-  <%= @logbook_page.logbook %>
+  <%= @logbook_page.logbook.name %>
 </p>
 
 <p>
@@ -10,5 +10,27 @@
   <%= @logbook_page.page_number %>
 </p>
 
-<%= link_to 'Edit', edit_logbook_page_path(@logbook_page) %> |
-<%= link_to 'Back', logbook_pages_path %>
+<table>
+  <thead>
+    <tr>
+      <th>Day Hours</th>
+	  <th>Mins</th>
+      <th>Night Hours</th>
+	  <th>Mins</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @logbook_page.logbook_entries.each do |logbook| %>
+      <tr>
+        <td><%= logbook.day_hours %></td>
+        <td><%= logbook.day_minutes %></td>
+        <td><%= logbook.night_hours %></td>
+        <td><%= logbook.night_minutes %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_logbook_logbook_page_path(@logbook, @logbook_page) %> |
+<%= link_to 'Logbook Pages', logbook_logbook_pages_path(@logbook) %>
