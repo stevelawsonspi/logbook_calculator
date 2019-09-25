@@ -1,6 +1,8 @@
-<h1>Editing Logbook Page</h1>
+<h1 class="text-center">Editing Logbook Page</h1>
 
 <%= render 'form', logbook: @logbook, logbook_page: @logbook_page %>
 
-<%= link_to 'Show', logbook_logbook_page_path(@logbook, @logbook_page) %> |
-<%= link_to 'Logbook Pages', logbook_logbook_pages_path(@logbook) %>
+<div class="row justify-content-center">
+  <%= link_to 'Show', logbook_logbook_page_path(@logbook, @logbook_page) %> |
+  <%= link_to 'Logbook Pages', logbook_logbook_pages_path(@logbook) %>
+</div>

@@ -1,38 +1,75 @@
-<%= "Logbook id = #{logbook_page.logbook_id}" %>
-<%= form_for([logbook, logbook_page]) do |f| %>
-  <% if logbook_page.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(logbook_page.errors.count, "error") %> prohibited this logbook_page from being saved:</h2>
+<div class="card">
+  <div class="card-body">
+    <%= form_for [logbook, logbook_page], :html => { class: 'form' } do |f| %>
+      <div class="row">
+        <% if logbook_page.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(logbook_page.errors.count, "error") %> prohibited this logbook_page from being saved:</h2>
 
-      <ul>
-      <% logbook_page.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+            <ul>
+            <% logbook_page.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      </div>
 
-  <div class="field">
-    <strong>Logbook Name: </strong><%= @logbook.name %>
+      <div class="row justify-content-center">
+        <div class="field">
+          <strong>Logbook Name: </strong><%= @logbook.name %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <%= f.hidden_field :logbook_id %>
+        <div class="field">
+          <%= f.label :page_number %>
+          <%= f.number_field :page_number %>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="table-responsive">
+          <table class="table table-sm mb-0">
+            <thead>
+              <tr>
+                <th>Day Start</th>
+        	      <th>End</th>
+        		    <th></th>
+                <th>Day Hours</th>
+        	      <th>Mins</th>
+                <th>Night Start</th>
+        	      <th>End</th>
+        		    <th></th>
+                <th>Night Hours</th>
+        	      <th>Mins</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <%= f.fields_for :logbook_entries, (f.object.new_record? ? nil : f.object.logbook_entries.order(:id)) do |ff| %>
+                <tr>
+        	      <td><%= ff.time_field   :day_start_time,   class: 'day_start_time'   %></td>
+        	      <td><%= ff.time_field   :day_end_time,     class: 'day_end_time'     %></td>
+        		    <td><button type="button" class="btn btn-primary calc_day_button">=></button></td>
+        	      <td><%= ff.number_field :day_hours,        class: 'day_hours'        %></td>
+        	      <td><%= ff.number_field :day_minutes,      class: 'day_minutes'      %></td>
+		  
+        	      <td><%= ff.time_field   :night_start_time, class: 'night_start_time' %></td>
+        	      <td><%= ff.time_field   :night_end_time,   class: 'night_end_time'   %></td>
+        		    <td><button type="button" class="btn btn-primary calc_night_button">=></button></td>
+        	      <td><%= ff.number_field :night_hours,      class: 'night_hours'      %></td>
+        	      <td><%= ff.number_field :night_minutes,    class: 'night_minutes'    %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="row justify-content-center">
+        <div class="actions">
+          <%= f.submit %>
+        </div>
+      </div>
+    <% end %>
   </div>
-  <%= f.hidden_field :logbook_id %>
-  <div class="field">
-    <%= f.label :page_number %>
-    <%= f.number_field :page_number %>
-  </div>
-
-  <ul>
-  <%= f.fields_for :logbook_entries do |ff| %>
-    <li>
-	  Day Hours     <%= ff.number_field :day_hours     %>
-	  Minutes       <%= ff.number_field :day_minutes   %>
-	  , Night Hours <%= ff.number_field :night_hours   %>
-	  Minutes       <%= ff.number_field :night_minutes %>
-    </li>
-  <% end %>
-  </ul>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>

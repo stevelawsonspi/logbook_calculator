@@ -12,19 +12,31 @@
 
 <table>
   <thead>
+	<tr>
+	  <th colspan="4">Day</th>
+	  <th colspan="4">Night</th>
+	</tr>
     <tr>
-      <th>Day Hours</th>
+      <th>Start</th>
+	  <th>End</th>
+      <th>Hours</th>
 	  <th>Mins</th>
-      <th>Night Hours</th>
+      <th>Start</th>
+	  <th>End</th>
+      <th>Hours</th>
 	  <th>Mins</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @logbook_page.logbook_entries.each do |logbook| %>
+    <% @logbook_page.logbook_entries.order(:id).each do |logbook| %>
       <tr>
+        <td><%= logbook.day_start_time.strftime("%I:%M %p") %></td>
+        <td><%= logbook.day_end_time.strftime("%I:%M %p") %></td>
         <td><%= logbook.day_hours %></td>
         <td><%= logbook.day_minutes %></td>
+        <td><%= logbook.night_start_time.strftime("%I:%M %p") %></td>
+        <td><%= logbook.night_end_time.strftime("%I:%M %p") %></td>
         <td><%= logbook.night_hours %></td>
         <td><%= logbook.night_minutes %></td>
       </tr>

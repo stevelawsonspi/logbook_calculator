@@ -28,7 +28,7 @@ class LogbookPageDeriver
           set_current_page_totals(day_total_minutes, night_total_minutes)
         end
       end
-      day_total_minutes   += (@current_page.logbook.start_day_hours * 60)   + @current_page.logbook.start_day_minutes
+      day_total_minutes   += (@current_page.logbook.start_day_hours   * 60) + @current_page.logbook.start_day_minutes
       night_total_minutes += (@current_page.logbook.start_night_hours * 60) + @current_page.logbook.start_night_minutes
       set_running_totals(day_total_minutes, night_total_minutes)
 

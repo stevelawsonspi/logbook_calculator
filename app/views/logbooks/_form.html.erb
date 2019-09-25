@@ -1,38 +1,80 @@
 <%= form_for(logbook) do |f| %>
-  <% if logbook.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(logbook.errors.count, "error") %> prohibited this logbook from being saved:</h2>
+  <div class="row">
+    <% if logbook.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(logbook.errors.count, "error") %> prohibited this logbook from being saved:</h2>
 
-      <ul>
-      <% logbook.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+        <ul>
+        <% logbook.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  </div>
+  <div class="row">
+    <div class="field">
+      <%= f.label      :name %>
+      <%= f.text_field :name, placeholder: 'Student\'s name...' %>
     </div>
-  <% end %>
-
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
   </div>
-  <div class="field">
-    <%= f.label      :start_day_hours %>
-    <%= f.number_field :start_day_hours %>
+  <div class="row">
+    <div class="field">
+      <%= f.label        :start_page_number %>
+      <%= f.number_field :start_page_number %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label      :start_day_minutes %>
-    <%= f.number_field :start_day_minutes %>
+  <div class="row">
+    <div class="field">
+      <%= f.label        :start_day_hours %>
+      <%= f.number_field :start_day_hours %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label      :start_night_hours %>
-    <%= f.number_field :start_night_hours %>
+  <div class="row">
+    <div class="field">
+      <%= f.label        :start_day_minutes %>
+      <%= f.number_field :start_day_minutes %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label      :start_night_minutes %>
-    <%= f.number_field :start_night_minutes %>
+  <div class="row">
+    <div class="field">
+      <%= f.label        :start_night_hours %>
+      <%= f.number_field :start_night_hours %>
+    </div>
   </div>
-
-  <div class="actions">
-    <%= f.submit %>
+  <div class="row">
+    <div class="field">
+      <%= f.label        :start_night_minutes %>
+      <%= f.number_field :start_night_minutes %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <%= f.label      :default_day_start_time %>
+      <%= f.time_field :default_day_start_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <%= f.label      :default_day_end_time %>
+      <%= f.time_field :default_day_end_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <%= f.label      :default_night_start_time %>
+      <%= f.time_field :default_night_start_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="field">
+      <%= f.label      :default_night_end_time %>
+      <%= f.time_field :default_night_end_time %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>

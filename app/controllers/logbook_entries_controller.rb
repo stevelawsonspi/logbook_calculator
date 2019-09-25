@@ -1,4 +1,5 @@
 class LogbookEntriesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_logbook_entry, only: [:show, :edit, :update, :destroy]
 
   # GET /logbook_entries

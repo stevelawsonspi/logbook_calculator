@@ -1,18 +1,21 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @logbook.name %>
+  <strong>Name:</strong><%= @logbook.name %>
   <br>
-  <strong>Start Day Hours:</strong>
-  <%= @logbook.start_day_hours %>
-  <strong>Minutes:</strong>
-  <%= @logbook.start_day_minutes %>
+  <strong>Start Page Number:</strong><%= @logbook.start_page_number %>
   <br>
-  <strong>Start Night Hours:</strong>
-  <%= @logbook.start_night_hours %>
-  <strong>Minutes:</strong>
-  <%= @logbook.start_night_minutes %>
+  <strong>Start Day Hours:</strong><%= @logbook.start_day_hours %>
+  <strong>Minutes:</strong><%= @logbook.start_day_minutes %>
+  <br>
+  <strong>Start Night Hours:</strong><%= @logbook.start_night_hours %>
+  <strong>Minutes:</strong><%= @logbook.start_night_minutes %>
+  <br>
+  <strong>Default Day times from:</strong><%= @logbook.default_day_start_time %>
+  <strong>to:</strong><%= @logbook.default_day_end_time %>
+  <br>
+  <strong>Default Night times from:</strong><%= @logbook.default_night_start_time %>
+  <strong>to:</strong><%= @logbook.default_night_end_time %>
 </p>
 
 <%= link_to 'Edit', edit_logbook_path(@logbook) %> |

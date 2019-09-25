@@ -1,4 +1,5 @@
 Rails.application.routes.draw do  
+  devise_for :users
   resources :logbooks do
     resources :logbook_pages
   end

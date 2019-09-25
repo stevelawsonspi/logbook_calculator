@@ -3,10 +3,8 @@
 
 ### Setup
 Install PostgreSQL
-
-download app from github
+Download app from github
 bundle install
-
 rails db:setup
 rails db:migrate
 

@@ -1,28 +1,26 @@
 class LogbooksController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_logbook, only: [:show, :edit, :update, :destroy]
 
-  # GET /logbooks
-  # GET /logbooks.json
   def index
     @logbooks = Logbook.all
   end
 
-  # GET /logbooks/1
-  # GET /logbooks/1.json
   def show
   end
 
-  # GET /logbooks/new
   def new
     @logbook = Logbook.new
+    @logbook.start_page_number        = 43
+    @logbook.default_day_start_time   = '11:00'
+    @logbook.default_day_end_time     = '13:30'
+    @logbook.default_night_start_time = '18:00'
+    @logbook.default_night_end_time   = '19:30'
   end
 
-  # GET /logbooks/1/edit
   def edit
   end
 
-  # POST /logbooks
-  # POST /logbooks.json
   def create
     @logbook = Logbook.new(logbook_params)
 
@@ -37,8 +35,6 @@ class LogbooksController < ApplicationController
     end
   end
 
-  # PATCH/PUT /logbooks/1
-  # PATCH/PUT /logbooks/1.json
   def update
     respond_to do |format|
       if @logbook.update(logbook_params)
@@ -51,8 +47,6 @@ class LogbooksController < ApplicationController
     end
   end
 
-  # DELETE /logbooks/1
-  # DELETE /logbooks/1.json
   def destroy
     @logbook.destroy
     respond_to do |format|
@@ -69,6 +63,9 @@ class LogbooksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def logbook_params
-      params.require(:logbook).permit(:name, :start_day_hours, :start_day_minutes, :start_night_hours, :start_night_minutes)
+      params.require(:logbook).permit(
+        :name, :start_page_number, :start_day_hours, :start_day_minutes, :start_night_hours, :start_night_minutes,
+        :default_day_start_time, :default_day_end_time, :default_night_start_time, :default_night_end_time
+      )
     end
 end

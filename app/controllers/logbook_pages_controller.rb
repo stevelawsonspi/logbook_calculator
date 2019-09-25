@@ -1,4 +1,5 @@
 class LogbookPagesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_logbook
   before_action :set_logbook_page, only: [:show, :edit, :update, :destroy]
 
@@ -10,10 +11,15 @@ class LogbookPagesController < ApplicationController
   end
 
   def new
-    @logbook_page = LogbookPage.new
-    @logbook_page.logbook_id = @logbook.id
-    @logbook_page.page_number = LogbookPage.default_new_page_number
-    8.times {@logbook_page.logbook_entries.build}
+    @logbook_page = LogbookPage.new(logbook_id: @logbook.id)
+    8.times do 
+      @logbook_page.logbook_entries.build(
+        day_start_time:   @logbook.default_day_start_time,
+        day_end_time:     @logbook.default_day_end_time,
+        night_start_time: @logbook.default_night_start_time,
+        night_end_time:   @logbook.default_night_end_time,
+      )
+    end
   end
 
   def edit
@@ -61,6 +67,9 @@ class LogbookPagesController < ApplicationController
     
     def logbook_page_params
       params.require(:logbook_page).permit(:logbook_id, :page_number, 
-        logbook_entries_attributes: [:id, :day_hours, :day_minutes, :night_hours, :night_minutes, :_destroy])
+        logbook_entries_attributes: [
+          :id, :day_hours, :day_minutes, :night_hours, :night_minutes,
+          :day_start_time, :day_end_time, :night_start_time, :night_end_time, :_destroy
+        ])
     end
 end
